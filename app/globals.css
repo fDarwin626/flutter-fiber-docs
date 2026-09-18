@@ -15,7 +15,9 @@
   --font-sans: var(--font-sans), sans-serif;
 }
 
-body {
+html, body {
   background: var(--color-bg);
   color: var(--color-text);
+  overflow-x: hidden;
+  max-width: 100%;
 }
