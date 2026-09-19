@@ -6,17 +6,7 @@ import CodeBlock from "./CodeBlock";
 
 const TRAIN_CODE = `import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_fiber/src/renderer/fiber3d_canvas.dart';
-import 'package:flutter_fiber/src/core/fiber3d_group.dart';
-import 'package:flutter_fiber/src/core/fiber3d_mesh.dart';
-import 'package:flutter_fiber/src/core/fiber3d_vector3.dart';
-import 'package:flutter_fiber/src/material/fiber3d_standard_material.dart';
-import 'package:flutter_fiber/src/light/fiber3d_ambient_light.dart';
-import 'package:flutter_fiber/src/light/fiber3d_point_light.dart';
-import 'package:flutter_fiber/src/camera/fiber3d_camera.dart';
-import 'package:flutter_fiber/src/geometry/fiber3d_box.dart';
-import 'package:flutter_fiber/src/geometry/fiber3d_cone.dart';
-import 'package:flutter_fiber/src/geometry/fiber3d_cylinder.dart';
+import 'package:flutter_fiber/flutter_fiber.dart';
 
 void main() {
   runApp(const FiberTrainDemo());

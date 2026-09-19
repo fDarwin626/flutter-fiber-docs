@@ -5,14 +5,8 @@ import gsap from "gsap";
 import CodeBlock from "./CodeBlock";
 
 const QUICK_START = `import 'package:flutter/material.dart';
-import 'package:flutter_fiber/src/renderer/fiber3d_canvas.dart';
-import 'package:flutter_fiber/src/core/fiber3d_mesh.dart';
-import 'package:flutter_fiber/src/core/fiber3d_vector3.dart';
-import 'package:flutter_fiber/src/material/fiber3d_standard_material.dart';
-import 'package:flutter_fiber/src/light/fiber3d_ambient_light.dart';
-import 'package:flutter_fiber/src/light/fiber3d_point_light.dart';
-import 'package:flutter_fiber/src/camera/fiber3d_camera.dart';
-import 'package:flutter_fiber/src/geometry/fiber3d_torus_knot.dart';
+import 'package:flutter_fiber/flutter_fiber.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -107,7 +101,7 @@ export default function Install() {
         </p>
         <CodeBlock
           language="yaml"
-          code={`dependencies:\n  flutter_fiber: ^0.1.0`}
+          code={`dependencies:\n  flutter_fiber: ^0.1.3`}
         />
       </div>
 
@@ -115,11 +109,41 @@ export default function Install() {
         <p className="font-sans text-sm text-text-dim">
           <span className="text-accent-2">Platform support:</span> Android is
           the primary, fully supported target. iOS is experimental and
-          physical device-only no simulator support, since Apple deprecated
+          physical-device-only no simulator support, since Apple deprecated
           OpenGL ES.
         </p>
       </div>
 
+      <div data-block className="max-w-2xl mb-10 border border-border bg-panel p-5">
+        <p className="font-sans text-sm text-text-dim mb-3">
+          <span className="text-accent-2">Required Android manifest fix</span>{" "}
+          <span className="text-text-dim">(temporary, will be removed in a future release):</span>{" "}
+          flutter_fiber&apos;s native OpenGL binding bundles its own small manifest,
+          which currently conflicts with your app&apos;s <code className="text-accent-2">android:label</code>.
+          Add <code className="text-accent-2">tools:replace=&quot;android:label&quot;</code> to your{" "}
+          <code className="text-accent-2">android/app/src/main/AndroidManifest.xml</code>&apos;s{" "}
+          <code className="text-accent-2">&lt;application&gt;</code> tag, and the{" "}
+          <code className="text-accent-2">xmlns:tools</code> namespace to the root{" "}
+          <code className="text-accent-2">&lt;manifest&gt;</code> tag:
+        </p>
+        <CodeBlock
+          language="xml"
+          code={`<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools">
+                <application
+                    android:label="your_app_name"
+                    android:name="\${applicationName}"
+                    android:icon="@mipmap/ic_launcher"
+                    tools:replace="android:label">
+                    <!-- ...rest of your existing <application> content stays unchanged... -->
+                </application>
+            </manifest>`}
+        />
+        <p className="font-sans text-xs text-text-dim mt-3">
+          Without this, the build fails with a manifest merge error:{" "}
+          <code className="text-accent-2">Attribute application@label value=(...) is also present at [com.futouapp:threeegl...]</code>.
+        </p>
+      </div>
       <div data-block className="max-w-3xl">
         <p className="font-sans text-sm text-text-dim mb-3">
           A complete, working scene a lit, shaded, animated, orbit-controllable
