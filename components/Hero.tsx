@@ -46,9 +46,10 @@ export default function Hero() {
         data-anim
         className="font-sans text-base sm:text-lg text-text-dim max-w-xl mb-10 leading-relaxed"
       >
-        Inspired by react-three-fiber. Procedural geometry, PBR lighting,
-        grouping, and animation built from Dart data. No asset pipeline.
-        No WebView. No bundled engine.
+        Build 3D scenes the way you build widget trees: procedural shapes from
+        Dart parameters, PBR materials, lights, image/text/live-widget
+        textures, and glTF/GLB models, rendered directly against OpenGL ES.
+        Inspired by react-three-fiber. No WebView. No bundled engine.
       </p>
 
       <div

@@ -21,13 +21,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "flutter_fiber native, declarative 3D for Flutter",
   description:
-    "A native, declarative Flutter 3D package inspired by react-three-fiber. Procedural geometry, PBR lighting, grouping, and animation built from Dart data, no asset pipeline, no WebView, no bundled engine.",
+    "Native, declarative 3D for Flutter. Procedural shapes from Dart parameters, PBR materials, lights, image/text/live-widget textures, and glTF/GLB models, rendered directly against OpenGL ES. Inspired by react-three-fiber. No WebView, no bundled engine.",
   keywords: [
     "flutter",
     "flutter 3d",
+    "flutter 3d package",
+    "flutter 3d model viewer",
+    "flutter glb",
+    "flutter gltf",
+    "flutter 3d library",
+    "flutter pbr",
+    "flutter clearcoat",
+    "flutter opengl",
+    "flutter three.js",
+    "flutter 3d without webview",
     "dart 3d",
     "react-three-fiber flutter",
-    "flutter opengl",
     "flutter game engine",
     "flutter geometry",
     "flutter fiber",
@@ -41,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "flutter_fiber native, declarative 3D for Flutter",
     description:
-      "Procedural geometry, PBR lighting, grouping, and animation for Flutter built from Dart data, not loaded from a file.",
+      "Native 3D for Flutter: procedural shapes, PBR materials, textures, and glTF/GLB models. No WebView, no bundled engine.",
     url: siteUrl,
     siteName: "flutter_fiber",
     images: ["/Flutter_icon.png"],
@@ -51,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "flutter_fiber native, declarative 3D for Flutter",
     description:
-      "Procedural geometry, PBR lighting, grouping, and animation for Flutter built from Dart data.",
+      "Native 3D for Flutter: procedural shapes, PBR materials, textures, and glTF/GLB models. No WebView, no bundled engine.",
     images: ["/Flutter_icon.png"],
   },
   robots: {
