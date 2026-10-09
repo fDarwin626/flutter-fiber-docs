@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flutter-fiber-docs.vercel.app/
+Sitemap: https://flutter-fiber-docs.vercel.app/sitemap.xml

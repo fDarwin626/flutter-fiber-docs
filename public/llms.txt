@@ -1,0 +1,18 @@
+# flutter_fiber
+
+> Declarative 3D for Flutter. Native, no WebView, no bundled engine. A three.js port with PBR materials, glTF loading, clearcoat, hemisphere lights and procedural sky.
+
+## Docs
+- [Home / Quick start](https://flutter-fiber-docs.vercel.app/)
+- [glTF / GLB models](https://flutter-fiber-docs.vercel.app/guides/gltf)
+- [Materials](https://flutter-fiber-docs.vercel.app/guides/materials)
+- [Clearcoat](https://flutter-fiber-docs.vercel.app/guides/clearcoat)
+- [Hemisphere light](https://flutter-fiber-docs.vercel.app/guides/hemisphere-light)
+- [Vertex colors](https://flutter-fiber-docs.vercel.app/guides/vertex-colors)
+- [Photo in shape](https://flutter-fiber-docs.vercel.app/guides/photo-in-shape)
+- [Lottie in shape](https://flutter-fiber-docs.vercel.app/guides/lottie-in-shape)
+- [Text in shape](https://flutter-fiber-docs.vercel.app/guides/text-in-shape)
+
+## Package
+- [pub.dev](https://pub.dev/packages/flutter_fiber)
+- [GitHub](https://github.com/fDarwin626/flutter_fiber)

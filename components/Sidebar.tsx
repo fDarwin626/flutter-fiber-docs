@@ -1,28 +1,73 @@
 "use client";
 
 import { useState } from "react";
-
-const NAV_ITEMS = [
-  { id: "hero", label: "flutter_fiber" },
-  { id: "why", label: "Why" },
-  { id: "install", label: "Install & Quick Start" },
-  { id: "shapes", label: "Shape Gallery" },
-  { id: "composing", label: "Composing Shapes" },
-  { id: "api", label: "API Reference" },
-  { id: "lifecycle", label: "Lifecycle" },
-  { id: "roadmap", label: "Roadmap" },
-];
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { HOME_SECTIONS, TOPICS } from "@/lib/siteConfig";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
+  const [pagesOpen, setPagesOpen] = useState(true);
+  const pathname = usePathname();
 
+  const topic = TOPICS.find((t) => pathname === `/guides/${t.slug}`);
+  const sections = topic ? topic.sections : HOME_SECTIONS;
+  const closeAll = () => {
+    setOpen(false);
+  };
   const NavContent = (
     <>
       <div className="px-5 py-5 border-b border-border">
-        <span className="font-mono text-sm text-accent-2">flutter_fiber</span>
+        <Link
+          href="/"
+          onClick={closeAll}
+          className="font-mono text-sm text-accent-2"
+        >
+          flutter_fiber
+        </Link>
       </div>
+
+      <div className="border-b border-border">
+        <button
+          onClick={() => setPagesOpen((v) => !v)}
+          aria-expanded={pagesOpen}
+          className="w-full flex items-center justify-between px-5 py-3 font-mono text-xs text-text hover:bg-bg transition-colors"
+        >
+          <span>Guides|Features</span>
+          <span className="text-text-dim">{pagesOpen ? "▴" : "▾"}</span>
+        </button>
+        {pagesOpen && (
+          <ul className="pb-2">
+            <li>
+              <Link
+                href="/"
+                onClick={closeAll}
+                className={`block px-5 py-2 font-mono text-xs hover:text-accent-2 hover:bg-bg transition-colors ${
+                  !topic ? "text-accent-2" : "text-text-dim"
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+            {TOPICS.map((t) => (
+              <li key={t.slug}>
+                <Link
+                  href={`/guides/${t.slug}`}
+                  onClick={closeAll}
+                  className={`block px-5 py-2 font-mono text-xs hover:text-accent-2 hover:bg-bg transition-colors ${
+                    topic?.slug === t.slug ? "text-accent-2" : "text-text-dim"
+                  }`}
+                >
+                  {t.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <ul className="flex-1 overflow-y-auto py-2">
-        {NAV_ITEMS.map((item) => (
+        {sections.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}
@@ -70,8 +115,8 @@ export default function Sidebar() {
           open
             ? "top-3 left-44 bg-transparent border-transparent"
             : "top-5 left-5 bg-panel border-border"
-        }`}      
-        >
+        }`}
+      >
         <span className="relative w-4 h-4">
           <span
             className={`absolute left-0 top-1/2 h-[1.5px] w-4 bg-text transition-all duration-300 ${

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           children: [
             Fiber3DMesh(
               geometry: Fiber3DTorusKnot(radius: 1.0, tube: 0.3),
-              material: const Fiber3DStandardMaterial(
+              material: Fiber3DStandardMaterial(
                 color: 0x3366ff,
                 roughness: 0.5,
                 metalness: 0.2,
@@ -101,7 +101,7 @@ export default function Install() {
         </p>
         <CodeBlock
           language="yaml"
-          code={`dependencies:\n  flutter_fiber: ^0.1.3`}
+          code={`dependencies:\n  flutter_fiber: ^0.2.0`}
         />
       </div>
 
@@ -151,6 +151,34 @@ export default function Install() {
         </p>
         <CodeBlock code={QUICK_START} />
       </div>
+
+      <div data-block className="max-w-3xl mt-10 border border-border bg-panel p-5">
+        <p className="font-sans text-sm text-text-dim mb-3">
+          <span className="text-accent-2">Upgrading from 0.1.x:</span> version
+          0.2.0 has three breaking changes.
+        </p>
+        <ul className="font-sans text-sm text-text-dim list-disc pl-5 space-y-2">
+          <li>
+            Remove <code className="text-accent-2">const</code> in front of{" "}
+            <code className="text-accent-2">Fiber3DStandardMaterial(...)</code>.
+            It now holds texture references, so its constructor is no longer
+            const.
+          </li>
+          <li>
+            <code className="text-accent-2">Fiber3DCanvas</code> no longer has{" "}
+            <code className="text-accent-2">skyColor</code> /{" "}
+            <code className="text-accent-2">groundColor</code>. Add a{" "}
+            <code className="text-accent-2">Fiber3DHemisphereLight</code> to{" "}
+            <code className="text-accent-2">lights</code> instead.
+          </li>
+          <li>
+            Lighting is now physically based, with environment reflections, so
+            existing scenes will look different. Re-tune light intensities,
+            roughness and metalness.
+          </li>
+        </ul>
+      </div>
     </section>
+
   );
 }

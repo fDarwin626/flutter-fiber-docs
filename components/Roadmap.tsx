@@ -3,18 +3,23 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+
 const ITEMS = [
   {
-    title: "GLTF / GLB loading",
-    body: "Reading a .glb's JSON + binary buffers directly into the same positions / normals / indices format the procedural geometry classes already produce so a loaded mesh and a procedural mesh are indistinguishable once in buffer form. No changes to the existing render pipeline required.",
+    title: "Text and logo extrusion (next)",
+    body: "A port of three.js's text and shape pipeline: glyph outlines and SVG-style shapes turned into real 3D geometry at runtime.",
   },
   {
-    title: "Text and logo extrusion",
-    body: "A 2D path/curve subsystem the same category of work behind three.js's ExtrudeGeometry/TextGeometry to turn a font outline or SVG-style shape into a real 3D object, procedurally, at runtime.",
+    title: "Transparency and materials",
+    body: "Depth-sorted transparency, multi-material meshes, normal maps, mipmaps and wrap modes, and matcap / gradient textures.",
   },
   {
-    title: "Expanded PBR & lighting",
-    body: "Additional material features (clearcoat, sheen, transmission) and a baked-cubemap environment-lighting tier, once loaded-texture infrastructure exists.",
+    title: "glTF",
+    body: "KHR_materials_* extensions and animation.",
+  },
+  {
+    title: "Environment",
+    body: "HDR environment map loading.",
   },
 ];
 
@@ -52,8 +57,9 @@ export default function Roadmap() {
         Roadmap
       </h2>
       <p className="font-sans text-sm sm:text-base text-text-dim max-w-2xl mb-12 leading-relaxed">
-        If you already have a finished 3D model to show off, this isn&apos;t
-        (yet) the package for that. Here&apos;s what&apos;s next.
+        glTF / GLB models and procedural shapes both work today. Here&apos;s
+        what&apos;s next, and what&apos;s under consideration (in no
+        particular order).
       </p>
 
       <div className="flex flex-col gap-4 max-w-2xl">

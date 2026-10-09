@@ -85,7 +85,7 @@ class _TrainBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Fiber3DMesh(
       geometry: Fiber3DBox(width: 1.6, height: 1.4, depth: 1.3),
-      material: const Fiber3DStandardMaterial(
+      material: Fiber3DStandardMaterial(
         color: 0xcc1111,
         roughness: 0.4,
         metalness: 0.3,
@@ -109,7 +109,7 @@ class _TrainBoiler extends StatelessWidget {
         height: 2.0,
         radialSegments: 24,
       ),
-      material: const Fiber3DStandardMaterial(
+      material: Fiber3DStandardMaterial(
         color: 0xcc1111,
         roughness: 0.4,
         metalness: 0.3,
@@ -136,7 +136,7 @@ class _Chimney extends StatelessWidget {
             height: 0.35,
             radialSegments: 16,
           ),
-          material: const Fiber3DStandardMaterial(
+          material: Fiber3DStandardMaterial(
             color: 0x1a1a1a,
             roughness: 0.5,
             metalness: 0.4,
@@ -148,7 +148,7 @@ class _Chimney extends StatelessWidget {
         ),
         Fiber3DMesh(
           geometry: Fiber3DCone(radius: 0.16, height: 0.18, radialSegments: 16),
-          material: const Fiber3DStandardMaterial(
+          material:Fiber3DStandardMaterial(
             color: 0x1a1a1a,
             roughness: 0.5,
             metalness: 0.4,
@@ -182,7 +182,7 @@ class _Wheel extends StatelessWidget {
         height: wheelThickness,
         radialSegments: 20,
       ),
-      material: const Fiber3DStandardMaterial(
+      material:Fiber3DStandardMaterial(
         color: 0x1a3d33,
         roughness: 0.5,
         metalness: 0.3,
@@ -256,6 +256,50 @@ export default function Composing() {
 
       <div data-compose className="max-w-3xl">
         <CodeBlock code={TRAIN_CODE} />
+      </div>
+
+      <div data-compose className="mt-16 pt-10 border-t border-border">
+        <p className="font-mono text-xs text-text-dim mb-3">// render quality</p>
+        <h3 className="font-mono text-xl sm:text-2xl font-bold text-text mb-3">
+          Built for quality, not just shapes
+        </h3>
+        <p className="font-sans text-sm sm:text-base text-text-dim max-w-2xl mb-8 leading-relaxed">
+          Everything above renders through a physically based pipeline: ACES
+          Filmic tone mapping, sRGB color management, and an environment map
+          generated from a procedural sky. The same Standard material covers
+          matte, metal, clearcoat and glass.
+        </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 max-w-5xl">
+        <figure data-compose>
+          <img
+            src="/videos/showcase_quality1.PNG"
+            alt="Grid of spheres with roughness from 0.0 to 1.0 across five columns and metalness across three rows"
+            className="w-full border border-border bg-black"
+          />
+          <figcaption className="font-sans text-xs sm:text-sm text-text-dim mt-3 leading-relaxed">
+            One material, 15 variations: five roughness steps by three
+            metalness steps, all with the same pink-red color.
+          </figcaption>
+        </figure>
+
+        <figure data-compose>
+          <video
+            src="/videos/quality_showcase1_screen.mp4"
+            muted
+            autoPlay
+            loop
+            playsInline
+            controls
+            className="w-full border border-border bg-black"
+          />
+          <figcaption className="font-sans text-xs sm:text-sm text-text-dim mt-3 leading-relaxed">
+            Matte, glossy (full metal plus clearcoat) and glass, on a sphere
+            and a chamfered box. Note: there is no depth-sorted transparency
+            yet, so overlapping transparent meshes can show sorting artifacts.
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

@@ -11,7 +11,7 @@ const OPTIONS = [
     body: "Draws a second, unlit wireframe pass over the shaded surface the shaded-fill-plus-visible-edges look seen in three.js's own geometry viewers. Ignored if the material's wireframe is already true (that mode is lines-only).",
     code: `Fiber3DMesh(
   geometry: Fiber3DTorus(radius: 1.0, tube: 0.4),
-  material: const Fiber3DStandardMaterial(color: 0x3366ff),
+  material: Fiber3DStandardMaterial(color: 0x3366ff),
   showEdges: true,
 )`,
   },
@@ -46,22 +46,28 @@ const OPTIONS = [
     body: "Opt-in two-finger pinch-to-scale on that mesh, off by default. Anchored to the scale at gesture start so it never compounds mid-gesture, and clamped by minPinchScale/maxPinchScale so it can't shrink to invisible or grow unbounded.",
     code: `Fiber3DMesh(
   geometry: Fiber3DSphere(radius: 1.2),
-  material: const Fiber3DStandardMaterial(color: 0x3366ff),
+  material: Fiber3DStandardMaterial(color: 0x3366ff),
   enablePinchScale: true,
   minPinchScale: 0.4,
   maxPinchScale: 2.5,
 )`,
   },
   {
-    name: "skyColor / groundColor",
-    where: "Fiber3DCanvas",
-    body: "A cheap fake-environment light (same technique as three.js's HemisphereLight)  blends two flat colors by each surface's normal direction so undersides aren't pure black. Not a rendered sky or ground plane, purely a lighting tint. Pass 0x000000 / 0x000000 to disable.",
+    name: "Fiber3DHemisphereLight",
+    where: "Fiber3DCanvas lights",
+    body: "A soft sky-and-ground light. Blends skyColor and groundColor by how much each surface faces direction, so undersides aren't pure black. No position, no falloff. Only the first hemisphere light is used, and it affects Fiber3DStandardMaterial only. It replaces the skyColor / groundColor parameters that Fiber3DCanvas had in 0.1.x.",
     code: `Fiber3DCanvas(
-  skyColor: 0x87A6C4,
-  groundColor: 0x3B3A35,
+  lights: [
+    Fiber3DHemisphereLight(
+      skyColor: 0x88aaff,
+      groundColor: 0x443322,
+      intensity: 1.0,
+    ),
+  ],
   // ...
 )`,
   },
+
   {
     name: "orbitEnabled",
     where: "Fiber3DCanvas",
